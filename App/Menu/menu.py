@@ -1,26 +1,6 @@
 import os
 import json
-from datetime import datetime
-
-try:
-    from colorama import Fore, Style, init
-    init(autoreset=True)
-except Exception:
-    class Dummy:
-        RESET_ALL = ""
-        LIGHTGREEN_EX = ""
-        LIGHTYELLOW_EX = ""
-        LIGHTRED_EX = ""
-        LIGHTCYAN_EX = ""
-        YELLOW = ""
-        GREEN = ""
-        RED = ""
-        CYAN = ""
-        MAGENTA = ""
-        BLUE = ""
-        WHITE = ""
-    Fore = Dummy()
-    Style = Dummy()
+import datetime
 
 class FoodItem:
     def __init__(self, item_id, name, portions_prices):
@@ -39,7 +19,7 @@ class StaffDashboard:
     @staticmethod
     def load_menu():
         try:
-            with open(StaffDashboard.get_menu_path(), "r") as file:
+            with open(StaffDashboard.get_menu_path(), 'r') as file:
                 data = json.load(file)
                 if data:
                     return data
@@ -48,7 +28,6 @@ class StaffDashboard:
 
         default_menu = []
         categories = {"B": "Breakfast", "L": "Lunch", "D": "Dinner", "V": "Beverage"}
-
         for prefix, cat_name in categories.items():
             for i in range(1, 100):
                 default_menu.append({
@@ -62,7 +41,7 @@ class StaffDashboard:
 
     @staticmethod
     def save_menu(menu_data):
-        with open(StaffDashboard.get_menu_path(), "w") as file:
+        with open(StaffDashboard.get_menu_path(), 'w') as file:
             json.dump(menu_data, file, indent=4)
 
     @staticmethod
@@ -77,6 +56,7 @@ class StaffDashboard:
             print("4 -> Logout (Back to Main Menu)")
 
             choice = input("Select an action : ").strip()
+
             if choice == '4':
                 break
 
@@ -125,9 +105,6 @@ class StaffDashboard:
                 else:
                     print("Item ID not found.")
 
-            else:
-                print("Invalid choice.")
-
 class FoodMenu:
     @staticmethod
     def get_dynamic_items():
@@ -138,21 +115,12 @@ class FoodMenu:
     def display_category(prefix, title):
         items = FoodMenu.get_dynamic_items()
         category_items = [item for item in items if item.item_id.startswith(prefix)]
-
-        color_map = {
-            "BREAKFAST": Fore.LIGHTGREEN_EX,
-            "LUNCH": Fore.LIGHTYELLOW_EX,
-            "DINNER": Fore.LIGHTRED_EX,
-            "BEVERAGES": Fore.LIGHTCYAN_EX
-        }
-
-        color = color_map.get(title.upper(), "")
         size = 85
 
         print("" + "=" * size)
-        print(color + f" {title} MENU ".center(size, "="))
+        print(f" {title} MENU ".center(size, "="))
         print("=" * size)
-        print(f"{'ID':<8}{'Item Name':<30}{'Portions & Prices'}")
+        print(f"{'ID':<5}{'Item Name':<25}{'Portions & Prices'}")
         print("-" * size)
 
         if not category_items:
@@ -160,14 +128,30 @@ class FoodMenu:
         else:
             print("Showing first 20 items (Scroll/Search ID for more)...")
             for item in category_items[:20]:
-                portions = "  |  ".join([f"{k}: Rs.{v}" for k, v in item.portions_prices.items()])
-                print(f"{item.item_id:<8}{item.name:<30}{portions}")
+                portions = " | ".join([f"{k}: Rs.{v}" for k, v in item.portions_prices.items()])
+                print(f"{item.item_id:<5}{item.name:<25}{portions}")
 
         print("=" * size)
 
 class OrderSystem:
     @staticmethod
-    def take_order(user, applied_discount=0):
+    def find_item(user_text, items):
+        user_text = user_text.strip().lower()
+
+        for item in items:
+            if item.item_id.lower() == user_text:
+                return item
+            if item.name.lower() == user_text:
+                return item
+
+        for item in items:
+            if user_text in item.name.lower():
+                return item
+
+        return None
+
+    @staticmethod
+    def take_order(customer_username, applied_discount=0):
         cart = []
         subtotal = 0
 
@@ -182,38 +166,16 @@ class OrderSystem:
             print("5 -> View Cart & Proceed to Pay")
 
             cat_choice = input("Select a category to view (or 5 to pay): ").strip()
-            prefix_map = {'1': ('B', 'BREAKFAST'), '2': ('L', 'LUNCH'), '3': ('D', 'DINNER'), '4': ('V', 'BEVERAGES')}
+            prefix_map = {
+                '1': ('B', 'BREAKFAST'),
+                '2': ('L', 'LUNCH'),
+                '3': ('D', 'DINNER'),
+                '4': ('V', 'BEVERAGES')
+            }
 
             if cat_choice in prefix_map:
                 prefix, title = prefix_map[cat_choice]
                 FoodMenu.display_category(prefix, title)
-
-                items_available = FoodMenu.get_dynamic_items()
-                while True:
-                    item_id = input(f"Enter Item ID to order from {title} (or 'BACK' to change category) : ").strip().upper()
-                    if item_id == 'BACK':
-                        break
-
-                    selected_item = next((i for i in items_available if i.item_id == item_id), None)
-                    if not selected_item:
-                        print("Invalid Item ID! Try again.")
-                        continue
-
-                    portions = list(selected_item.portions_prices.keys())
-                    for i, p in enumerate(portions, 1):
-                        print(f"  {i}. {p} (Rs. {selected_item.portions_prices[p]})")
-
-                    try:
-                        p_choice = int(input("Select portion number : ")) - 1
-                        sel_p = portions[p_choice]
-                        qty = int(input("How many? : "))
-                        cost = selected_item.portions_prices[sel_p] * qty
-                        subtotal += cost
-                        cart.append({"name": selected_item.name, "portion": sel_p, "cost": cost})
-                        print(f"Added! Subtotal: Rs. {subtotal}")
-                    except (ValueError, IndexError):
-                        print("Invalid selection.")
-
             elif cat_choice == '5':
                 if not cart:
                     print("Your cart is empty. Please order something first.")
@@ -221,6 +183,41 @@ class OrderSystem:
                 break
             else:
                 print("Invalid choice.")
+                continue
+
+            items_available = FoodMenu.get_dynamic_items()
+
+            while True:
+                item_text = input(f"Enter Item ID or Item Name from {title} (or 'BACK' / 'X' to change category) : ").strip()
+
+                if item_text.upper() == 'BACK':
+                    break
+                elif  item_text.upper()=='X':
+                    break
+                selected_item = OrderSystem.find_item(item_text, items_available)
+
+                if not selected_item:
+                    print("Invalid Item ID or Item Name! Try again.")
+                    continue
+
+                portions = list(selected_item.portions_prices.keys())
+
+                for i, p in enumerate(portions, 1):
+                    print(f"  {i}. {p} (Rs. {selected_item.portions_prices[p]})")
+
+                try:
+                    p_choice = int(input("Select portion number : ")) - 1
+                    sel_p = portions[p_choice]
+                    qty = int(input("How many? : "))
+                    cost = selected_item.portions_prices[sel_p] * qty
+                    subtotal += cost
+                    cart.append({"name": selected_item.name, "portion": sel_p, "cost": cost})
+                    print(f"Added! Subtotal: Rs. {subtotal}")
+                except (ValueError, IndexError):
+                    print("Invalid selection.")
+
+        if not cart:
+            return
 
         gst = subtotal * 0.05
         grand_total = subtotal + gst
@@ -232,47 +229,36 @@ class OrderSystem:
         if grand_total < 0:
             grand_total = 0
 
-        OrderSystem.print_bill(user, cart, subtotal, gst, applied_discount, grand_total)
+        OrderSystem.print_bill(cart, subtotal, gst, applied_discount, grand_total)
 
         if input("Proceed to Payment? (Y/N): ").strip().upper() == 'Y':
-            OrderSystem.process_payment(user, grand_total)
+            OrderSystem.process_payment(customer_username, grand_total)
 
     @staticmethod
-    def print_bill(user, cart, subtotal, gst, discount, grand_total):
-        print("" + "=" * 55)
-        print("YOUR BILL".center(55))
-        print("=" * 55)
-        print(f"Name   : {user.get('fullname', 'N/A')}")
-        print(f"User   : {user.get('username', 'N/A')}")
-        print(f"Mobile : {user.get('mobile', 'N/A')}")
-        print(f"Address: {user.get('address', 'N/A')}")
-        print("-" * 55)
+    def print_bill(cart, subtotal, gst, discount, grand_total):
+        print("" + "=" * 50)
+        print("YOUR BILL".center(50))
+        print("=" * 50)
 
         for item in cart:
             print(f"{item['name']} ({item['portion']}) -> Rs. {item['cost']}")
 
-        print("-" * 55)
+        print("-" * 50)
         print(f"Subtotal : Rs. {subtotal:.2f}")
         print(f"GST (5%) : Rs. {gst:.2f}")
         if discount > 0:
             print(f"Discount : -Rs. {discount:.2f}")
         print(f"TOTAL DUE: Rs. {grand_total:.2f}")
-        print("=" * 55)
+        print("=" * 50)
 
     @staticmethod
-    def process_payment(user, grand_total):
+    def process_payment(username, grand_total):
         method = {"1": "UPI", "2": "Cash", "3": "Card"}.get(
             input("Payment Methods: [1] UPI [2] Cash [3] Card : ").strip(),
             "Cash"
         )
         print(f"Paid Rs. {grand_total:.2f} via {method}. Thank you!")
 
-        from App.Database.DayBook.daybook import DayBookSystem
-        DayBookSystem.add_record({
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
-            "username": user.get("username", ""),
-            "fullname": user.get("fullname", ""),
-            "amount": grand_total,
-            "type": "Payment",
-            "status": method
-        })
+        path = os.path.join(os.path.dirname(__file__), "..", "Database", "daydata.txt")
+        with open(path, 'a') as f:
+            f.write(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}] {username} | Rs. {grand_total:.2f} | {method}")
