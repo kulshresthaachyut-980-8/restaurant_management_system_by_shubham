@@ -2,6 +2,9 @@ import os
 import json
 import datetime
 
+menu_logs_path=os.path.join(os.path.dirname(__file__),"..","Logs","menu_logs_.txt")
+report_data_path = os.path.join(os.path.dirname(__file__), "..", "Database", "DayBook", "daybook.json")              
+
 class FoodItem:
     def __init__(self, item_id, name, portions_prices):
         self.item_id = item_id
@@ -53,11 +56,12 @@ class StaffDashboard:
             print("1 -> Add New Menu Item")
             print("2 -> Update Item Price")
             print("3 -> Delete Menu Item")
-            print("4 -> Logout (Back to Main Menu)")
+            print("4 -> Check Day Record")
+            print("5 -> Logout (Back to Main Menu)")
 
             choice = input("Select an action : ").strip()
 
-            if choice == '4':
+            if choice == '5':
                 break
 
             menu_data = StaffDashboard.load_menu()
@@ -89,8 +93,10 @@ class StaffDashboard:
                             item["portions_prices"][portion] = int(input("New Price : "))
                             StaffDashboard.save_menu(menu_data)
                             print("Price updated successfully!")
-                        except ValueError:
+                        except ValueError as e:
                             print("Invalid price!")
+                            with open (menu_logs_path,'a')as f:
+                                f.write(f"\n[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}] Error  ->  {e}")
                         break
                 if not found:
                     print("Item ID not found.")
@@ -104,7 +110,55 @@ class StaffDashboard:
                     print("Item deleted successfully!")
                 else:
                     print("Item ID not found.")
+            
+            elif choice == '4':
+                try:
+                    
+                    with open(report_data_path, 'r') as f:
+                        daybook_data = json.load(f)
+                    
+                    print("\n" + "=" * 50)
+                    print("DAYBOOK REPORT".center(50))
+                    print("=" * 50)
+                    print("[1] View All Records")
+                    print("[2] Search by Specific Date (YYYY-MM-DD)")
+                    report_choice = input("Select option: ").strip()
+                    
+                    target_date = ""
+                    if report_choice == '2':
+                        target_date = input("Enter date (e.g., 2026-06-21) : ").strip()
 
+                    print("-" * 65)
+                    print(f"{'DATE & TIME':<18} | {'USERNAME':<15} | {'METHOD':<8} | {'AMOUNT'}")
+                    print("-" * 65)
+                    
+                    total_revenue = 0
+                    records_found = 0
+                    
+                    for record in daybook_data:
+                        if report_choice == '1' or record.get('date', '').startswith(target_date):
+                            date_str = record.get('date', 'N/A')
+                            user_str = record.get('username', 'Unknown')
+                            method_str = record.get('method', 'N/A')
+                            amount = float(record.get('amount', 0))
+            
+                            print(f"{date_str:<18} | {user_str:<15} | {method_str:<8} | Rs. {amount:.2f}")
+                            
+                            total_revenue += amount
+                            records_found += 1
+                    
+                    print("-" * 65)
+                    if records_found == 0:
+                        print("No records found for that selection.")
+                    else:
+                        print(f"Total Transactions : {records_found}")
+                        print(f"Total Revenue      : Rs. {total_revenue:.2f}")
+                    print("-" * 65)
+                    
+                except (FileNotFoundError, json.JSONDecodeError) as f:
+                    print("No daybook records found yet! (File is empty or missing)")
+                    with open (menu_logs_path,'w') as log_data:
+                        log_data.write(f"\n[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}] Error -> {f}")
 class FoodMenu:
     @staticmethod
     def get_dynamic_items():
@@ -213,8 +267,11 @@ class OrderSystem:
                     subtotal += cost
                     cart.append({"name": selected_item.name, "portion": sel_p, "cost": cost})
                     print(f"Added! Subtotal: Rs. {subtotal}")
-                except (ValueError, IndexError):
+                except (ValueError, IndexError) as e:
                     print("Invalid selection.")
+                    with open (menu_logs_path,'a') as f:
+                        f.write(f"\n[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}] Error -> {e}")
+
 
         if not cart:
             return
@@ -229,15 +286,20 @@ class OrderSystem:
         if grand_total < 0:
             grand_total = 0
 
-        OrderSystem.print_bill(cart, subtotal, gst, applied_discount, grand_total)
+        OrderSystem.print_bill(customer_username,cart, subtotal, gst, applied_discount, grand_total)
 
         if input("Proceed to Payment? (Y/N): ").strip().upper() == 'Y':
             OrderSystem.process_payment(customer_username, grand_total)
-
+    
     @staticmethod
-    def print_bill(cart, subtotal, gst, discount, grand_total):
+    def print_bill(user_info,cart, subtotal, gst, discount, grand_total):
         print("" + "=" * 50)
         print("YOUR BILL".center(50))
+        print("=" * 50)
+        print(f"Name      : {user_info.get('fullname','N/A')}")
+        print(f"Username  : {user_info.get('username','N/A')}")
+        print(f"Phone     : {user_info.get('mobile','N/A')}")
+        print(f"Address   : {user_info.get('address','N/A')}  ")
         print("=" * 50)
 
         for item in cart:
@@ -259,6 +321,27 @@ class OrderSystem:
         )
         print(f"Paid Rs. {grand_total:.2f} via {method}. Thank you!")
 
-        path = os.path.join(os.path.dirname(__file__), "..", "Database", "daydata.txt")
-        with open(path, 'a') as f:
-            f.write(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}] {username} | Rs. {grand_total:.2f} | {method}")
+        path = os.path.join(os.path.dirname(__file__), "..", "Database", "DayBook", "daybook.json")
+
+        if isinstance(username, dict):
+            actual_user = username.get("username", "Unknown")
+        else:
+            actual_user = username
+
+        new_record = {
+            "date": datetime.datetime.now().strftime('%Y-%m-%d %H:%M'),
+            "username": actual_user,
+            "amount": grand_total,
+            "method": method
+        }
+
+        try:
+            with open(path, 'r') as f:
+                daybook_data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            daybook_data = [] 
+
+        daybook_data.append(new_record)
+
+        with open(path, 'w') as f:
+            json.dump(daybook_data, f, indent=4)
