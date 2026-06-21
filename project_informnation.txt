@@ -1,0 +1,5 @@
+This project is a Restaurant Management System made in Python that helps manage customers,
+staff, menu items, table booking, food ordering, and billing in one place. It lets users
+log in, choose food from different menu categories, book a table in advance, get discounts,
+and pay the bill easily, while also helping staff and admin manage the restaurant work in a
+simple and organized way.
