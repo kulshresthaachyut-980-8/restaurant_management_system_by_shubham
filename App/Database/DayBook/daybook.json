@@ -1,0 +1,68 @@
+[
+    {
+        "date": "2026-06-21 21:25",
+        "username": "himanshu7945",
+        "amount": 210.0,
+        "method": "UPI"
+    },
+    {
+        "date": "2026-06-22 09:59",
+        "username": "himanshu7945",
+        "fullname": "Himanshu Sharma",
+        "amount": 450,
+        "type": "Booking",
+        "status": "Paid"
+    },
+    {
+        "date": "2026-06-22 11:38",
+        "username": "yashu555",
+        "fullname": "Yashu Kulshrestha",
+        "amount": 450,
+        "type": "Booking",
+        "status": "Paid"
+    },
+    {
+        "date": "2026-06-22 15:54",
+        "username": "himanshu7945",
+        "amount": 157.5,
+        "method": "Cash"
+    },
+    {
+        "date": "2026-06-23 14:02",
+        "username": "sami4756",
+        "fullname": "Samikhsha Singh",
+        "amount": 450,
+        "type": "Booking",
+        "status": "Paid"
+    },
+    {
+        "date": "2026-06-23 14:35",
+        "username": "sami4756",
+        "fullname": "Samikhsha Singh",
+        "amount": 450,
+        "type": "Booking",
+        "status": "Paid"
+    },
+    {
+        "date": "2026-06-23 14:48",
+        "username": "sami4756",
+        "fullname": "Samikhsha Singh",
+        "amount": 450,
+        "type": "Booking",
+        "status": "Paid"
+    },
+    {
+        "date": "2026-06-23 15:00",
+        "username": "aditi8742",
+        "fullname": "Aditi Tiwari",
+        "amount": 450,
+        "type": "Booking",
+        "status": "Paid"
+    },
+    {
+        "date": "2026-06-23 15:10",
+        "username": "rahul7812",
+        "amount": 215.25,
+        "method": "UPI"
+    }
+]

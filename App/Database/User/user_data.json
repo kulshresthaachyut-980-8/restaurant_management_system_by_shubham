@@ -1,0 +1,74 @@
+[
+    {
+        "uid": "40C047",
+        "fullname": "Shubham Kulshresth",
+        "username": "shubh1212",
+        "mobile": "8445289808",
+        "address": "Aligarh",
+        "password": "shubh@123",
+        "role": "admin"
+    },
+    {
+        "uid": "E424E8",
+        "fullname": "Himanshu Sharma",
+        "username": "himanshu7945",
+        "mobile": "7410852963",
+        "address": "Aligarh",
+        "password": "himanshu@1010",
+        "role": "waitstaff"
+    },
+    {
+        "uid": "EBEA97",
+        "fullname": "Yashu Kulshrestha",
+        "username": "yashu555",
+        "mobile": "7252079852",
+        "address": "Agra",
+        "password": "yashu@1010",
+        "role": "waitstaff"
+    },
+    {
+        "uid": "D876DD",
+        "fullname": "Raju Kushwah",
+        "username": "raju8413",
+        "mobile": "+917845120369",
+        "address": "Dholpur,Rajasthan.",
+        "password": "raju@1740",
+        "role": "waitstaff"
+    },
+    {
+        "uid": "E25597",
+        "fullname": "Rahul Sharma",
+        "username": "rahul7812",
+        "mobile": "9876543210",
+        "address": "Jodhpur,Rajasthan.",
+        "password": "rahul@0023",
+        "role": "waitstaff"
+    },
+    {
+        "uid": "AA37E4",
+        "fullname": "Samikhsha Singh",
+        "username": "sami4756",
+        "mobile": "7654321098",
+        "address": "Dwarka mor,Delhi",
+        "password": "sami@031",
+        "role": "waitstaff"
+    },
+    {
+        "uid": "DCD6A5",
+        "fullname": "Aditi Tiwari",
+        "username": "aditi8742",
+        "mobile": "9812467503",
+        "address": "Aligarh",
+        "password": "aditi@2026",
+        "role": "waitstaff"
+    },
+    {
+        "uid": "E93837",
+        "fullname": "Sanchita Kulshrestha",
+        "username": "sanchita9123",
+        "mobile": "7461358201",
+        "address": "Kasganj",
+        "password": "sanchita@6700",
+        "role": "admin"
+    }
+]

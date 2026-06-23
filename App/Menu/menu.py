@@ -57,11 +57,12 @@ class StaffDashboard:
             print("2 -> Update Item Price")
             print("3 -> Delete Menu Item")
             print("4 -> Check Day Record")
-            print("5 -> Logout (Back to Main Menu)")
+            print("5 -> See Table Booking Record")
+            print("6 -> Logout (Back to Main Menu)")
 
             choice = input("Select an action : ").strip()
 
-            if choice == '5':
+            if choice == '6':
                 break
 
             menu_data = StaffDashboard.load_menu()
@@ -159,6 +160,44 @@ class StaffDashboard:
                     print("No daybook records found yet! (File is empty or missing)")
                     with open (menu_logs_path,'w') as log_data:
                         log_data.write(f"\n[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}] Error -> {f}")
+            
+            elif choice=='5':
+
+                table_json_data_path=os.path.join(os.path.dirname(__file__),"..","Database","Booking","bookings.json")
+                try:
+                    with open(table_json_data_path,'r') as f:
+                        booking_data=json.load(f)
+                    print("/n" + "=" * 50)
+                    print("TABLE BOOKING REPORT".center(50))
+                    print("=" * 50)
+                    print("[1] View All Bookings")
+                    print("[2] Search by specific Date (YYYY-MM-DD)")
+                    table_report_choice=input("Select Option : ").strip()
+                    date=""
+                    if table_report_choice=='2':
+                        date=input("Enter date (e.g. 2026-06-20) : ").strip()
+                    print("-" * 75)
+                    print(f"{'BOOKING ID':<12} | {'USERNAME':<15} | {'START TIME':<20} | {'STATUS'}")
+                    print("-" * 75)
+                    data_found=0
+                    for booking in booking_data:
+                        if table_report_choice=='1' or booking.get("booking_start_datetime","").startswith(date):
+                            booking_id=booking.get("booking_id","N/A")
+                            user=booking.get("username","Unknown")
+                            start_time=booking.get("booking_start_datetime","N/A")
+                            status=booking.get("status","N/A")
+                            print(f" {booking_id:<12} | {user:<15} | {start_time:<20} | {status}")
+                            data_found+=1
+                    print("-" * 75)
+                    if data_found==0:
+                        print("No Booking Found ! ")
+                    else:
+                        print(f"Total Bookings Found : {data_found}")
+                    print("-" * 75)
+                except (FileNotFoundError,json.JSONDecodeError):
+                    print("No Bookings Found ! (Database is empty or missing)")
+
+
 class FoodMenu:
     @staticmethod
     def get_dynamic_items():
@@ -174,7 +213,7 @@ class FoodMenu:
         print("" + "=" * size)
         print(f" {title} MENU ".center(size, "="))
         print("=" * size)
-        print(f"{'ID':<5}{'Item Name':<25}{'Portions & Prices'}")
+        print(f"{'ID':<7}{'Item Name':<30}{'Portions & Prices'}")
         print("-" * size)
 
         if not category_items:
@@ -182,8 +221,8 @@ class FoodMenu:
         else:
             print("Showing first 20 items (Scroll/Search ID for more)...")
             for item in category_items[:20]:
-                portions = " | ".join([f"{k}: Rs.{v}" for k, v in item.portions_prices.items()])
-                print(f"{item.item_id:<5}{item.name:<25}{portions}")
+                portions = " / ".join([f"{k} : Rs.{v:<3}" for k, v in item.portions_prices.items()])
+                print(f"{item.item_id:<7}{item.name:<30}{portions}")
 
         print("=" * size)
 

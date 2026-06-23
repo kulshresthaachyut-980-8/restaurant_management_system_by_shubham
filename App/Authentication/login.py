@@ -1,6 +1,10 @@
 import os
 import json
 import pwinput
+import datetime
+
+
+logs_path=os.path.join(os.path.dirname(__file__),"..","Logs","login_logs.txt")
 
 class LoginSystem:
     @staticmethod
@@ -14,8 +18,12 @@ class LoginSystem:
         try:
             with open(LoginSystem.get_user_path(), "r") as f:
                 return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print("Somthing went wrong")
+            with open(logs_path,'w')as log:
+                log.print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')} Error : {e}")
             return []
+            
 
     @staticmethod
     def login():

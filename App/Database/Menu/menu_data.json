@@ -1,0 +1,722 @@
+[
+    {
+        "item_id": "B1",
+        "name": "Poha",
+        "stock": 70,
+        "portions_prices": {
+            "Half": 30,
+            "Full": 50
+        }
+    },
+    {
+        "item_id": "B2",
+        "name": "Idli",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 40,
+            "4pic": 70
+        }
+    },
+    {
+        "item_id": "B3",
+        "name": "Upma",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 35,
+            "Full": 65
+        }
+    },
+    {
+        "item_id": "B4",
+        "name": "Aloo Paratha",
+        "stock": 28,
+        "portions_prices": {
+            "2pic": 50,
+            "4pic": 90
+        }
+    },
+    {
+        "item_id": "B5",
+        "name": "Masala Dosa",
+        "stock": 40,
+        "portions_prices": {
+            "1pic": 80,
+            "2pic": 120
+        }
+    },
+    {
+        "item_id": "B6",
+        "name": "Vada Pav",
+        "stock": 34,
+        "portions_prices": {
+            "1pic": 30,
+            "2pic": 50
+        }
+    },
+    {
+        "item_id": "B7",
+        "name": "Oats Bowl",
+        "stock": 39,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 90
+        }
+    },
+    {
+        "item_id": "B8",
+        "name": "Pancakes",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 70,
+            "4pic": 90
+        }
+    },
+    {
+        "item_id": "B9",
+        "name": "Bread Omelette",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 30,
+            "Full": 50
+        }
+    },
+    {
+        "item_id": "B10",
+        "name": "Corn Flakes",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 60,
+            "Full": 80
+        }
+    },
+    {
+        "item_id": "B11",
+        "name": "Sandwich",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 30,
+            "Full": 50
+        }
+    },
+    {
+        "item_id": "B12",
+        "name": "Kachori",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 30,
+            "4pic": 50
+        }
+    },
+    {
+        "item_id": "B13",
+        "name": "Thepla",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 70,
+            "4pic": 90
+        }
+    },
+    {
+        "item_id": "B14",
+        "name": "Misal Pav",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 40,
+            "Full": 70
+        }
+    },
+    {
+        "item_id": "B15",
+        "name": "Chole Bhature",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 140,
+            "Full": 190
+        }
+    },
+    {
+        "item_id": "B16",
+        "name": "Appam",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 80,
+            "4pic": 110
+        }
+    },
+    {
+        "item_id": "B17",
+        "name": "Puri Sabzi",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 90
+        }
+    },
+    {
+        "item_id": "B18",
+        "name": "French Toast",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 70,
+            "4pic": 90
+        }
+    },
+    {
+        "item_id": "B19",
+        "name": "Muesli",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 90,
+            "Full": 70
+        }
+    },
+    {
+        "item_id": "B20",
+        "name": "Bhakri",
+        "stock": 40,
+        "portions_prices": {
+            "1pic": 70,
+            "2pic": 90
+        }
+    },
+    {
+        "item_id": "L1",
+        "name": "Veg Thali",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 99,
+            "Full": 150
+        }
+    },
+    {
+        "item_id": "L2",
+        "name": "Paneer Butter Masala",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 140,
+            "Full": 90
+        }
+    },
+    {
+        "item_id": "L3",
+        "name": "Dal Tadka",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 140,
+            "Full": 190
+        }
+    },
+    {
+        "item_id": "L4",
+        "name": "Jeera Rice",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 125
+        }
+    },
+    {
+        "item_id": "L5",
+        "name": "Rajma Chawal",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 110
+        }
+    },
+    {
+        "item_id": "L6",
+        "name": "Veg Biryani",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 60,
+            "Full": 100
+        }
+    },
+    {
+        "item_id": "L7",
+        "name": "Kadhi Chawal",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 90,
+            "Full": 150
+        }
+    },
+    {
+        "item_id": "L8",
+        "name": "Butter Naan",
+        "stock": 40,
+        "portions_prices": {
+            "1pic": 30,
+            "2pic": 50
+        }
+    },
+    {
+        "item_id": "L9",
+        "name": "Mix Veg",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 130,
+            "Full": 170
+        }
+    },
+    {
+        "item_id": "L10",
+        "name": "Aloo Gobi",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 110,
+            "Full": 160
+        }
+    },
+    {
+        "item_id": "L11",
+        "name": "Dal Fry",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 60,
+            "Full": 110
+        }
+    },
+    {
+        "item_id": "L12",
+        "name": "Sambar Rice",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 90,
+            "Full": 110
+        }
+    },
+    {
+        "item_id": "L13",
+        "name": "Methi Thepla",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 70,
+            "4pic": 90
+        }
+    },
+    {
+        "item_id": "L14",
+        "name": "Veg Pulao",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 110,
+            "Full": 170
+        }
+    },
+    {
+        "item_id": "L15",
+        "name": "Stuffed Capsicum",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 70,
+            "4pic": 110
+        }
+    },
+    {
+        "item_id": "L16",
+        "name": "Shahi Paneer",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 250,
+            "Full": 370
+        }
+    },
+    {
+        "item_id": "L17",
+        "name": "Chole Rice",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 80,
+            "Full": 100
+        }
+    },
+    {
+        "item_id": "L18",
+        "name": "Curd Rice",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 100
+        }
+    },
+    {
+        "item_id": "L19",
+        "name": "Baingan Bharta",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 95,
+            "Full": 115
+        }
+    },
+    {
+        "item_id": "L20",
+        "name": "Khichdi",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 140
+        }
+    },
+    {
+        "item_id": "D1",
+        "name": "Tomato Soup",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 50,
+            "Lar.": 70
+        }
+    },
+    {
+        "item_id": "D2",
+        "name": "Veg Manchurian",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 80,
+            "Full": 100
+        }
+    },
+    {
+        "item_id": "D3",
+        "name": "Paneer Tikka",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 170,
+            "Full": 210
+        }
+    },
+    {
+        "item_id": "D4",
+        "name": "Hakka Noodles",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 90
+        }
+    },
+    {
+        "item_id": "D5",
+        "name": "Fried Rice",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 90,
+            "Full": 110
+        }
+    },
+    {
+        "item_id": "D6",
+        "name": "Spring Rolls",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 70,
+            "4pic": 100
+        }
+    },
+    {
+        "item_id": "D7",
+        "name": "Chilli Paneer",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 90
+        }
+    },
+    {
+        "item_id": "D8",
+        "name": "Manchow Soup",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 70,
+            "Lar.": 90
+        }
+    },
+    {
+        "item_id": "D9",
+        "name": "Mushroom Masala",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 60,
+            "Full": 80
+        }
+    },
+    {
+        "item_id": "D10",
+        "name": "Tandoori Roti",
+        "stock": 40,
+        "portions_prices": {
+            "1pic": 20,
+            "2pic": 30
+        }
+    },
+    {
+        "item_id": "D11",
+        "name": "Dal Makhani",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 145,
+            "Full": 175
+        }
+    },
+    {
+        "item_id": "D12",
+        "name": "Butter Chicken",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 140,
+            "Full": 170
+        }
+    },
+    {
+        "item_id": "D13",
+        "name": "Veg Korma",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 120
+        }
+    },
+    {
+        "item_id": "D14",
+        "name": "Pizza",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 220,
+            "Lar.": 220
+        }
+    },
+    {
+        "item_id": "D15",
+        "name": "Garlic Bread",
+        "stock": 40,
+        "portions_prices": {
+            "2pic": 87,
+            "4pic": 90
+        }
+    },
+    {
+        "item_id": "D16",
+        "name": "Pasta Alfredo",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 70,
+            "Full": 110
+        }
+    },
+    {
+        "item_id": "D17",
+        "name": "Kadai Paneer",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 220,
+            "Full": 310
+        }
+    },
+    {
+        "item_id": "D18",
+        "name": "Egg Curry",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 30,
+            "Full": 50
+        }
+    },
+    {
+        "item_id": "D19",
+        "name": "Chicken Biryani",
+        "stock": 40,
+        "portions_prices": {
+            "Half": 80,
+            "Full": 120
+        }
+    },
+    {
+        "item_id": "D20",
+        "name": "Laccha Paratha",
+        "stock": 40,
+        "portions_prices": {
+            "1pic": 60,
+            "2pic": 90
+        }
+    },
+    {
+        "item_id": "V1",
+        "name": "Tea",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 20,
+            "Lar.": 30
+        }
+    },
+    {
+        "item_id": "V2",
+        "name": "Coffee",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 25,
+            "Lar.": 35
+        }
+    },
+    {
+        "item_id": "V3",
+        "name": "Lemonade",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 30,
+            "Lar.": 50
+        }
+    },
+    {
+        "item_id": "V4",
+        "name": "Cold Coffee",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 75,
+            "Lar.": 100
+        }
+    },
+    {
+        "item_id": "V5",
+        "name": "Mango Shake",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 60,
+            "Lar.": 90
+        }
+    },
+    {
+        "item_id": "V6",
+        "name": "Masala Chai",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 30,
+            "Lar.": 50
+        }
+    },
+    {
+        "item_id": "V7",
+        "name": "Fresh Lime Soda",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 50,
+            "Lar.": 70
+        }
+    },
+    {
+        "item_id": "V8",
+        "name": "Buttermilk",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 30,
+            "Lar.": 60
+        }
+    },
+    {
+        "item_id": "V9",
+        "name": "Mojito",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 70,
+            "Lar.": 100
+        }
+    },
+    {
+        "item_id": "V10",
+        "name": "Orange Juice",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 120,
+            "Lar.": 170
+        }
+    },
+    {
+        "item_id": "V11",
+        "name": "Apple Juice",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 65,
+            "Lar.": 80
+        }
+    },
+    {
+        "item_id": "V12",
+        "name": "Watermelon Juice",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 30,
+            "Lar.": 50
+        }
+    },
+    {
+        "item_id": "V13",
+        "name": "Milkshake",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 80,
+            "Lar.": 120
+        }
+    },
+    {
+        "item_id": "V14",
+        "name": "Iced Tea",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 40,
+            "Lar.": 70
+        }
+    },
+    {
+        "item_id": "V15",
+        "name": "Hot Chocolate",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 80,
+            "Lar.": 100
+        }
+    },
+    {
+        "item_id": "V16",
+        "name": "Lassi",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 30,
+            "Lar.": 50
+        }
+    },
+    {
+        "item_id": "V17",
+        "name": "Coconut Water",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 40,
+            "Lar.": 70
+        }
+    },
+    {
+        "item_id": "V18",
+        "name": "Green Tea",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 40,
+            "Lar.": 75
+        }
+    },
+    {
+        "item_id": "V19",
+        "name": "Coke",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 40,
+            "Lar.": 70
+        }
+    },
+    {
+        "item_id": "V20",
+        "name": "Mocktail",
+        "stock": 40,
+        "portions_prices": {
+            "Sml.": 170,
+            "Lar.": 290
+        }
+    }
+]

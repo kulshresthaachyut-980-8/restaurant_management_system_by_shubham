@@ -1,0 +1,26 @@
+[
+    {
+        "booking_id": "F9DAE2",
+        "table_id": "T2",
+        "uid": "AA37E4",
+        "username": "sami4756",
+        "fullname": "Samikhsha Singh",
+        "mobile": "7654321098",
+        "address": "Dwarka mor,Delhi",
+        "start_datetime": "2026-06-23 18:55:00",
+        "end_datetime": "2026-06-23 20:55:00",
+        "status": "Active"
+    },
+    {
+        "booking_id": "3BE207",
+        "table_id": "T4",
+        "uid": "DCD6A5",
+        "username": "aditi8742",
+        "fullname": "Aditi Tiwari",
+        "mobile": "9812467503",
+        "address": "Aligarh",
+        "start_datetime": "2026-06-23 19:15:00",
+        "end_datetime": "2026-06-23 21:15:00",
+        "status": "Active"
+    }
+]
